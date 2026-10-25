@@ -31,6 +31,12 @@ if not exist node_modules\dotenv (
   )
 )
 
+echo Starting Asif-YouTube-Agent...
 node index.js
+if errorlevel 1 (
+  echo.
+  echo  The agent stopped with an error. The message above explains why.
+  echo  Full help: open SETUP-GUIDE.md in this folder.
+)
 echo.
 pause

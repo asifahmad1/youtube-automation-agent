@@ -15,8 +15,11 @@ if errorlevel 1 (
   exit /b 1
 )
 
-if not exist node_modules (
-  echo First run: installing the needed packages. This takes a minute...
+REM Install (or repair) the packages if they are missing. Checking for the
+REM dotenv package specifically, so a half-finished earlier install is
+REM repaired instead of skipped.
+if not exist node_modules\dotenv (
+  echo Installing the needed packages. This takes a minute...
   echo.
   call npm install
   if errorlevel 1 (

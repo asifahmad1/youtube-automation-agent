@@ -1,0 +1,11 @@
+# Secrets — never put these on GitHub.
+.env
+credentials.json
+token.json
+
+# Your videos, data and logs — these are yours, not for GitHub.
+data/
+output/
+
+# Installed packages (recreated with "npm install").
+node_modules/

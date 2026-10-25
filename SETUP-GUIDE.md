@@ -89,6 +89,12 @@ analytics. You do it once in your browser.
 7. Click **Download JSON** on the client you just created. Save the file as
    **`credentials.json`** inside the `youtube-automation-agent` folder
    (the same folder as `Start-Agent.cmd`).
+   **If you cannot find a download button** (Google keeps moving it): scroll
+   down on that same client page — you will see **Client ID** and
+   **Client secret** with copy buttons next to them. Copy both values into
+   your `.env` file (step 5) as `YOUTUBE_CLIENT_ID=` and
+   `YOUTUBE_CLIENT_SECRET=` instead. That works exactly the same, and no
+   file download is needed at all.
 
 > **Important:** `credentials.json` is like a password for your channel.
 > Never email it to anyone and never upload it to GitHub. The agent keeps it
@@ -190,7 +196,7 @@ example with the text **"YouTube Automation Agent (GitHub)"** pointing to
 | `No Gemini key found` / `No ... key found` | The `.env` file has no key for the chosen AI provider. | Open `.env` in Notepad and paste the key (step 4). Check there are no spaces around the `=`. |
 | `LLM_PROVIDER is not recognised` | The provider name in `.env` is misspelled. | Use exactly one of: `gemini`, `openai`, `anthropic`, `openrouter`, `ollama` (all lower-case). |
 | `No YouTube API key` | `YOUTUBE_API_KEY` is empty in `.env`. | Add the API key from step 3. Research will not work without it, but you can still type topics by hand in menu 2. |
-| `credentials.json was not found` | The Google file is missing or named differently. | Download it again (step 3, point 7) and save it as exactly `credentials.json` in the agent folder. |
+| `YouTube sign-in details were not found` | Neither `credentials.json` nor the two `.env` lines are set. | Add `YOUTUBE_CLIENT_ID` and `YOUTUBE_CLIENT_SECRET` to `.env` (step 3, point 7 — copy them from the client page), or download `credentials.json` into the agent folder. |
 | `redirect_uri_mismatch` when signing in | The OAuth client type is wrong. | In Google Cloud, the OAuth client must be **Desktop app**, not Web. Create a new one and download its JSON. |
 | `access_blocked` / "This app isn't verified" | Google shows a warning for unverified apps. | Click **Advanced → Go to Asif YouTube Agent (unsafe)**. It is your own app. Make sure your email is added as a Test user (step 3, point 6). |
 | `quota exceeded` / `403` from YouTube | YouTube's daily free limit (10,000 units) is used up. | Wait until tomorrow. Uploads cost about 1,600 units each, searches cost 100. Do not run Research many times in a row. |
